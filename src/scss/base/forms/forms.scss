@@ -1,0 +1,72 @@
+//<INPUT>
+// Сніппет (HTML): inp
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+.input {
+	width: 100%;
+	outline: none;
+
+	display: flex;
+	@include adaptiveValue("padding", 20, 14,0,1920,1366.98);
+	align-items: flex-start;
+	align-self: stretch;
+	border-radius: 20px;
+	background: #F1F1F1;
+	border: 2px solid transparent;
+	
+
+	color: $mainColor;
+	font-size: toRem(18);
+	font-weight: 500;
+	line-height: 1.2;
+	transition: all .3s ease;
+	&._form-focus {
+		border: 2px solid #4483E1;
+	}
+	&._form-error {
+	}
+	&::placeholder {
+		transition: opacity 0.3s;
+		color: rgba(0, 0, 0, 0.20);
+	}
+	&:focus::placeholder {
+		opacity: 0;
+	}
+}
+
+
+.form {
+	textarea {
+		resize: none;
+		min-height: toRem(142);
+		@media (max-width: toEm(900.98)){
+			 min-height: toRem(100); 
+		}
+	}
+	// .form__item
+	&__item {
+		position: relative;
+		@include adaptiveValue("margin-bottom", 30,16,0,1920,1366.98 );
+	}
+	// .form__label
+	&__label {
+		display: block;
+		color: $mainColor;
+		font-weight: 600;
+		margin-bottom: toRem(15);
+		line-height: normal;
+		@include adaptiveValue("font-size", 22, 15,0,1920,1366.98);
+	}
+	// .form__input
+	&__input {
+	}
+	// .form__btn
+	&__btn {
+	}
+}

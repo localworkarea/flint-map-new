@@ -1,0 +1,217 @@
+// Заголовки, загальні БЕМ блоки та інше...
+[class*="__container"] {
+  width: 100%;
+  padding-left: toRem(20);
+  padding-right: toRem(20);
+  margin-inline: auto;
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+%container {
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.bg-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+%animOpTr {
+  opacity: 0;
+  transform: translate(0,100%);
+  transition: opacity .45s ease, transform .45s ease;
+  .loaded & {
+    opacity: 1;
+    transform: translate(0,0%);
+  }
+}
+
+%animOp {
+  opacity: 0;
+  transition: opacity .6s ease;
+  .loaded & {
+    opacity: 1;
+  }
+}
+
+%animOpTr2 {
+  opacity: 0;
+  transform: translate(0,100%);
+  transition: opacity .65s ease, transform .65s ease;
+  .active-section &,
+  .previous-section & {
+      opacity: 1;
+      transform: translate(0,0%);
+  }
+}
+
+%animOp2 {
+  opacity: 0;
+  transition: opacity .6s ease;
+  .active-section &,
+  .previous-section & {
+    opacity: 1;
+  }
+}
+
+
+.btn {
+  font-weight: 700;
+  padding-top: toRem(26);
+  padding-bottom: toRem(26);
+  width: 100%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: toRem(60);
+  transition: box-shadow .3s ease, transform .45s ease;
+  &.btn-01,
+  &.btn-02 {
+    background: linear-gradient(180deg, #f28b2f 29.61%, #f2522e 84.72%);
+  }
+  &.btn-01 {
+    box-shadow: 5px 11px 0 0 rgba(19, 99, 200, 0.6);
+    font-size: toRem(20);
+    max-width: toRem(360);
+    padding-left: toRem(50);
+    padding-right: toRem(50);
+  }
+  &.btn-02 {
+    line-height: 1.2;
+    box-shadow: 5px 11px 0 0 #fff;
+    @include adaptiveValue("font-size", 20, 16,0,1920,480.98);
+    max-width: toRem(380);
+    padding-left: toRem(20);
+    padding-right: toRem(20);
+    @media (max-width:$mobileSmall){
+      padding-top: toRem(20);
+      padding-bottom: toRem(20);
+    }
+  }
+
+  &:active {
+    box-shadow: 0px 0px 0 0 rgba(19, 99, 200, 0.6);
+    transform: translate(0,15px);
+  }
+  &.btn-form {
+    box-shadow: 0 5px 10px 0 rgba(65, 127, 220, 0.3);
+    background: linear-gradient(180deg, #4483e1 0%, #2c65bb 100%);
+    @include adaptiveValue("font-size", 20, 16,0,1920,480.98);
+  }
+}
+
+.title-main {
+  font-family: "Chunkfive Ex";
+    text-transform: uppercase;
+    span {
+      display: inline-block;
+    }
+    .title-a {
+      display: inline-block;
+      
+      span {
+        position: relative;
+        &::before{
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translate(-50%,-41%) rotate(45deg);
+          background-color:$mainColor;
+        }
+      }
+    }
+    .title-b {
+      color: #F1AB4E;
+    }
+    @media (max-width: toEm(375.98)){
+      margin-bottom: toRem(10);
+    }
+  &.title-main_big {
+    .title-a {
+      @include adaptiveValue("font-size", 100, 70,2,1920,1366.98);
+      @include adaptiveValue("font-size", 70, 36,3,1366.98,480.98);
+      margin-bottom: toRem(10);
+      span {
+        &::before{
+          @include adaptiveValue("width", 15,5,0,1920,480.98 );
+          @include adaptiveValue("height", 15,5,0,1920,480.98 );
+        }
+      }
+    }
+    .title-b {
+      @include adaptiveValue("font-size", 50, 35,2,1920,1366.98);
+      @include adaptiveValue("font-size", 35, 24,3,1366.98,480.98);
+    }
+  }
+  &.title-main_sm {
+    .title-a {
+      @include adaptiveValue("font-size", 40, 30,0,1920,480.98);
+      margin-bottom: toRem(5);
+      span {
+        &::before{
+          width: toRem(5);
+          height: toRem(5);
+        }
+      }
+    }
+    .title-b {
+      font-size: toRem(18);
+    }
+  }
+
+} 
+
+
+.title-01,
+.title-02 {
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+.title-01 {
+  @include adaptiveValue("font-size", 24, 16,0,1920,480.98);
+  @media (max-width: toEm(375.98)){
+      font-size: toRem(14) !important;
+  }
+}
+.title-02 {
+  @include adaptiveValue("font-size", 40, 28,2,1920,1366.98);
+  @include adaptiveValue("font-size", 28, 24,3,1366.98,480.98);
+  @media (max-width: toEm(375.98)){
+    font-size: toRem(20) !important;
+  }
+}
+
+
+.social-icon {
+  // .social-icon__item
+  &__item {
+    flex: 0 0 auto;
+    @include adaptiveValue("width", 93, 82,0,1920,1366.98);
+    height: auto;
+    aspect-ratio: 1/1;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border-radius: 100%;
+    background-image:  linear-gradient(180deg, #f28b2f 29.61%, #f2522e 84.72%);
+    box-shadow: 5px 11px 0 0 #fff;
+    transition: box-shadow .3s ease, transform .45s ease;
+    &:active {
+      box-shadow: 0px 0px 0 0 #fff;
+      transform: translate(0,15px);
+    }
+  }
+}
