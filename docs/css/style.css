@@ -1693,7 +1693,7 @@ body::after {
     padding: 0 1.25rem
   }
   .fourth__bg img {
-    top: 3.75rem
+    top: 3.75rem!important
   }
 }
 @media (max-width:62.06125em) {
