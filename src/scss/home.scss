@@ -218,8 +218,8 @@
 
     position: absolute;
     z-index: 1;
-    top: 54%;
-    left: 25%;
+    top: 59%;
+    left: 24%;
     transform: translate(-50%,-50%);
     height: auto;
     @include adaptiveValue("width", 255, 120,0,1920,480.98);
