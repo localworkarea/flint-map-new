@@ -169,6 +169,10 @@ textarea {
 .input:focus::placeholder {
   opacity: 0
 }
+.form._sending .form__btn {
+  pointer-events: none;
+  opacity: .5
+}
 .form textarea {
   resize: none;
   min-height: 8.875rem
@@ -431,14 +435,16 @@ body::after {
 }
 .first__box-g,
 .first__circle,
-.first__logo img {
+.first__logo img,
+.first__rules {
   opacity: 0;
   transition: opacity .6s ease
 }
 .first__logo .loaded img,
 .loaded .first__box-g,
 .loaded .first__circle,
-.loaded .first__logo img {
+.loaded .first__logo img,
+.loaded .first__rules {
   opacity: 1
 }
 .fourth__sub-title,
@@ -718,6 +724,13 @@ body::after {
   transition-delay: 1.52s;
   -webkit-transform: translate(0,-40%) rotate(15deg);
   transform: translate(0,-40%) rotate(15deg)
+}
+.first__rules {
+  margin: 0 0 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+  transition-delay: 1.6s
 }
 .first__btn-wr {
   transition-delay: 1.65s
@@ -1122,11 +1135,6 @@ body::after {
 .fourth__right .form textarea {
   resize: none
 }
-.fourth__rules {
-  font-weight: 600;
-  text-align: center;
-  display: block
-}
 .rules {
   color: #000;
   font-style: normal;
@@ -1154,6 +1162,50 @@ body::after {
 }
 .rules__li:not(:last-child) {
   margin-bottom: .8125rem
+}
+.arrows {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 50;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: .625rem;
+  opacity: 0
+}
+.loaded .arrows {
+  opacity: 1
+}
+.arrows__btn {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: rgba(255,255,255,.7)
+}
+.arrows__btn svg {
+  width: 100%;
+  height: auto
+}
+.arrows__btn svg path {
+  fill: #196ce9
+}
+.arrows__btn.arrows-next,
+.arrows__btn.arrows-prev {
+  transition: opacity .6s ease
+}
+.fp-section-0 .arrows__btn.arrows-next,
+.fp-section-0 .arrows__btn.arrows-prev {
+  opacity: 0;
+  pointer-events: none
+}
+.fp-section-3 .arrows__btn.arrows-next {
+  opacity: 0;
+  pointer-events: none
 }
 @media (min-width:26.31125em) {
   .fourth__right .form {
@@ -1286,6 +1338,11 @@ body::after {
   }
   .fourth__bg img {
     top: 70px
+  }
+}
+@media (min-width:85.43625em) {
+  .arrows__btn {
+    width: 4rem
   }
 }
 @media (min-width:98.81125em) {
@@ -1892,6 +1949,9 @@ body::after {
   }
   .fourth__baner {
     padding: 1.25rem
+  }
+  .arrows__btn {
+    width: 3.125rem
   }
 }
 @media (max-width:23.49875em) {
@@ -2614,6 +2674,16 @@ body::after {
       padding: calc(1.25rem + .3125 * (100vw - 30.06125rem)/ 55.375)
     }
   }
+  @supports (width:clamp(3.125rem ,2.649991535rem + 1.5801354402vw ,4rem)) {
+    .arrows__btn {
+      width: clamp(3.125rem ,2.649991535rem + 1.5801354402vw ,4rem)
+    }
+  }
+  @supports not (width:clamp(3.125rem ,2.649991535rem + 1.5801354402vw ,4rem)) {
+    .arrows__btn {
+      width: calc(3.125rem + .875 * (100vw - 30.06125rem)/ 55.375)
+    }
+  }
 }
 @media (max-width:93.81125em) and (min-width:40.68625em) and (orientation:portrait) {
   .loaded .first__bg .bg-el-01,
@@ -2714,7 +2784,7 @@ body::after {
   }
 }
 @media (any-hover:hover) {
-  .fourth__rules:hover {
+  .first__rules:hover {
     text-decoration: underline
   }
 }

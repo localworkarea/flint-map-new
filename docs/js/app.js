@@ -4551,6 +4551,14 @@
                         this.switchingSection(1);
                     }));
                 }));
+                const prevButton = document.querySelector(".arrows-prev");
+                const nextButton = document.querySelector(".arrows-next");
+                if (prevButton) prevButton.addEventListener("click", (() => {
+                    this.choiceOfDirection(-1);
+                }));
+                if (nextButton) nextButton.addEventListener("click", (() => {
+                    this.choiceOfDirection(1);
+                }));
             }
             removeEvents() {
                 this.wrapper.removeEventListener("wheel", this.events.wheel);
